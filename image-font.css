@@ -1,0 +1,11 @@
+@font-face {
+  font-family: "Yangjin";
+  src: url("https://cdn.jsdelivr.net/gh/supernovice-lab/font@0.9/yangjin.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.page-image {
+  font-family: "Yangjin", "Noto Sans KR", "Malgun Gothic", sans-serif;
+}
