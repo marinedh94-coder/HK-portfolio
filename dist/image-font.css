@@ -6,6 +6,50 @@
   font-display: swap;
 }
 
-.page-image {
+.page-image,
+.page-article,
+.page-video,
+.page-final {
   font-family: "Yangjin", "Noto Sans KR", "Malgun Gothic", sans-serif;
+}
+
+/* Keep the video page consistent with the portfolio's light content pages. */
+.page-video {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.page-video header {
+  background: var(--paper);
+}
+
+.page-video .green,
+.page-video .brand-icon,
+.page-video nav a[aria-current] {
+  color: var(--green);
+}
+
+.page-video header .brand {
+  color: var(--ink);
+}
+
+.page-video .page-heading,
+.page-video footer {
+  border-color: var(--line);
+}
+
+.page-video .sample-label {
+  border-color: var(--line);
+}
+
+.page-video .page-heading > p:not(.eyebrow),
+.page-video .video-description > p,
+.page-video .storyboard p:last-child,
+.page-video footer,
+.page-video .footer-brand {
+  color: var(--muted);
+}
+
+.page-video .storyboard article {
+  border-color: var(--line);
 }
