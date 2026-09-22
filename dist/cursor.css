@@ -1,0 +1,13 @@
+body.pixel-cursor-active,
+body.pixel-cursor-active * {
+  cursor: none !important;
+}
+
+.pixel-cursor-layer {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+}

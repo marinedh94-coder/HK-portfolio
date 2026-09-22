@@ -13,6 +13,10 @@
 - `dist/final.html`: 프로젝트 소개와 제작 과정
 - `dist/styles.css`: 공통 스타일과 모바일 대응
 - `dist/profile.css`: My Profile 및 다섯 개 메뉴·카테고리 스타일
+- `dist/cursor.js`, `dist/cursor.css`: 픽셀 네잎클로버 커서와 반짝이 효과
+- `dist/music.js`, `dist/music.css`: 직접 켜고 끄는 배경음악 버튼
+- `dist/assets/cafe-waltz.wav`: 오리지널 카페풍 연주 음원
+- `scripts/generate-cafe-loop.mjs`: 오리지널 음원 재생성 스크립트
 - `dist/assets/atelier.png`: AI 생성 예시 이미지
 
 ## 콘텐츠 교체
