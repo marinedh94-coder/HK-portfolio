@@ -1,9 +1,9 @@
-body.pixel-cursor-active,
-body.pixel-cursor-active * {
+body.fountain-pen-active,
+body.fountain-pen-active * {
   cursor: none !important;
 }
 
-.pixel-cursor-layer {
+.ink-cursor-layer {
   position: fixed;
   inset: 0;
   width: 100vw;
