@@ -62,3 +62,79 @@
   .profile-prose p { font-size: 16px; }
   .profile-interests .section { padding-top: 55px; padding-bottom: 55px; }
 }
+
+/* Keep the same content hierarchy without horizontal scrolling on narrow screens. */
+header, main, footer, .section, .page-heading { min-width: 0; }
+main > *, .profile-hero-inner > *, .article-feature > *, .project-body > * { min-width: 0; }
+h1, h2, h3, p, a, strong { overflow-wrap: anywhere; }
+
+@media (max-width: 1100px) {
+  header { height: auto; min-height: 100px; padding-top: 18px; padding-bottom: 14px; flex-wrap: wrap; row-gap: 10px; }
+  header nav { width: 100%; height: auto; justify-content: center; gap: clamp(16px, 3vw, 32px); }
+  .header-note { display: none; }
+  .profile-copy { padding: clamp(36px, 5vw, 70px); }
+  .profile-copy h1 { font-size: clamp(40px, 5vw, 60px); }
+}
+
+@media (max-width: 850px) {
+  .profile-hero-inner { grid-template-columns: minmax(0, 1fr); }
+  .profile-copy { min-height: 0; padding: clamp(34px, 7vw, 65px); }
+  .profile-visual { min-height: 250px; }
+  .spotlight { grid-template-columns: minmax(0, 1fr); }
+  .spotlight-art { min-height: 300px; height: 38vw; max-height: 440px; }
+  .article-feature { grid-template-columns: minmax(0, 1fr); }
+  .article-visual { height: clamp(260px, 45vw, 400px); }
+  .project-body { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .project-body aside { border-bottom: 1px solid var(--line); padding-bottom: 24px; }
+}
+
+@media (max-width: 600px) {
+  header { padding: 14px 16px 12px; gap: 12px; }
+  header nav { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); width: 100%; gap: 4px 8px; overflow: visible; white-space: normal; text-align: center; font-size: clamp(11px, 3vw, 14px); }
+  header nav a { min-width: 0; padding: 7px 2px; }
+  header nav a:nth-child(-n + 3) { grid-column: span 2; }
+  header nav a:nth-child(n + 4) { grid-column: span 3; }
+  .hero { display: flex; flex-direction: column; min-height: 540px; height: auto; margin: 0 12px; }
+  .hero-copy { padding: 55px 7% 35px; }
+  .hero-bottom { position: relative; inset: auto; margin-top: auto; padding: 12px 7% 22px; flex-wrap: wrap; }
+  .hero h1 { font-size: clamp(33px, 9vw, 44px); }
+  .section-head { gap: 14px; margin-bottom: 30px; }
+  .section-head > p br, .spotlight-copy p br, .journal p br { display: none; }
+  .category-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .category { min-height: 0; }
+  .category-mark { font-size: clamp(42px, 12vw, 58px); }
+  .profile-category .category-mark { font-size: clamp(42px, 12vw, 56px); }
+  .profile-copy h1 { font-size: clamp(34px, 9vw, 44px); }
+  .profile-visual { min-height: 225px; }
+  .profile-visual-mark { font-size: clamp(100px, 30vw, 150px); }
+  .profile-youtube-button { max-width: 100%; gap: 12px; font-size: 14px; }
+  .profile-interest-grid a { min-height: 0; }
+  .spotlight-art { height: 260px; min-height: 0; }
+  .gallery figcaption { gap: 2px; }
+  .gallery-large .art-button, .art-button { height: clamp(230px, 70vw, 340px); }
+  .video-screen { height: clamp(275px, 80vw, 380px); }
+  .video-overlay { padding: 20px; }
+  .video-overlay h2 { font-size: clamp(32px, 10vw, 48px); }
+  .video-overlay > p { letter-spacing: 2px; }
+  .project-cover { margin: 0 12px; height: clamp(330px, 90vw, 430px); }
+  .project-cover h2 { font-size: clamp(28px, 8vw, 38px); }
+  footer { margin: 0 6%; }
+}
+
+@media (max-width: 380px) {
+  .brand { font-size: 15px; }
+  .brand-icon { font-size: 38px; }
+  .brand small { font-size: 8px; }
+  .category-grid { grid-template-columns: minmax(0, 1fr); }
+  .category { padding: 20px; }
+  .category-mark { margin: 8px 0; }
+  .profile-hero { padding-left: 8px; padding-right: 8px; }
+  .profile-copy { padding: 30px 22px; }
+  .profile-visual { padding: 20px; }
+  summary { padding-left: 0; padding-right: 0; gap: 10px; }
+  .list-num { font-size: 18px; }
+  summary strong { font-size: 15px; }
+  .expand { font-size: 20px; }
+  .story { padding-left: 10px; padding-right: 10px; }
+  .music-toggle { right: 10px; bottom: 10px; padding: 9px 12px; font-size: 12px; }
+}

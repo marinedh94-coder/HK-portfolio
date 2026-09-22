@@ -53,3 +53,11 @@
 .page-video .storyboard article {
   border-color: var(--line);
 }
+
+.page-video .video-overlay {
+  color: #fff;
+}
+
+.page-video .video-state {
+  border-color: rgba(255, 255, 255, .8);
+}
