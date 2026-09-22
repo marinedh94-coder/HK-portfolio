@@ -1,0 +1,61 @@
+/* Shared navigation and the My Profile card. */
+@media (min-width: 1001px) {
+  header nav { gap: clamp(16px, 2.1vw, 34px); }
+  .category-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+}
+@media (max-width: 1160px) {
+  .header-note { display: none; }
+}
+@media (max-width: 600px) {
+  header nav { width: 100%; justify-content: flex-start; gap: 22px; overflow-x: auto; white-space: nowrap; scrollbar-width: thin; }
+  header nav a { flex: none; }
+}
+.profile-category { background: #dcefe2; }
+.profile-category .category-mark { font-size: 56px; letter-spacing: -0.08em; }
+.page-introduce { font-family: "Yangjin", "Noto Sans KR", "Malgun Gothic", sans-serif; }
+.profile-hero { padding: 28px 5% 0; }
+.profile-hero-inner { min-height: 570px; display: grid; grid-template-columns: 1.1fr .9fr; background: #e8f1e9; }
+.profile-copy { padding: clamp(50px, 7vw, 105px); display: flex; align-items: flex-start; flex-direction: column; justify-content: center; }
+.profile-copy h1 { font-size: clamp(44px, 5vw, 72px); line-height: 1.28; margin-bottom: 25px; }
+.profile-copy h1 em { color: var(--green); font-style: normal; }
+.profile-lead { max-width: 520px; font-size: 18px; line-height: 1.9; }
+.profile-note { color: var(--muted); font-size: 13px; margin: 4px 0 30px; }
+.profile-visual { background: #1b5140; color: #d8f2da; display: flex; flex-direction: column; justify-content: space-between; padding: 35px; overflow: hidden; }
+.profile-visual-label,.profile-visual-bottom { font-size: 11px; letter-spacing: 2px; }
+.profile-visual-mark { align-self: center; font-family: Georgia, serif; font-size: clamp(140px, 18vw, 290px); line-height: 1; letter-spacing: -.13em; color: var(--mint); }
+.profile-visual-mark span { font-size: .35em; vertical-align: top; letter-spacing: 0; }
+.profile-about { display: grid; grid-template-columns: 1fr 1.1fr; gap: 8%; align-items: start; }
+.profile-about h2 { margin: 0; }
+.profile-prose p { font-size: 17px; line-height: 2; }
+.profile-prose p + p { color: var(--muted); margin-top: 20px; }
+.profile-interests { background: #edf2eb; }
+.profile-interests .section { padding-top: 80px; padding-bottom: 90px; }
+.profile-interest-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 16px; margin-top: 38px; }
+.profile-interest-grid a { position: relative; background: var(--paper); padding: 28px; min-height: 240px; transition: transform .2s; }
+.profile-interest-grid a:hover { transform: translateY(-5px); }
+.profile-interest-grid span { color: var(--green); font-size: 12px; letter-spacing: 1px; }
+.profile-interest-grid h3 { margin: 45px 0 10px; font-size: 24px; }
+.profile-interest-grid p { max-width: 280px; color: var(--muted); font-size: 15px; }
+.profile-interest-grid b { position: absolute; top: 22px; right: 26px; font-weight: 400; }
+.profile-end { text-align: center; }
+.profile-end p:not(.eyebrow) { color: var(--muted); margin: 22px 0 28px; }
+@media (max-width: 850px) {
+  .profile-hero-inner { grid-template-columns: 1fr; }
+  .profile-copy { min-height: 440px; }
+  .profile-visual { min-height: 300px; }
+  .profile-visual-mark { font-size: 170px; }
+  .profile-about { grid-template-columns: 1fr; gap: 30px; }
+  .profile-interest-grid { grid-template-columns: 1fr; }
+  .profile-interest-grid a { min-height: 190px; }
+  .profile-interest-grid h3 { margin-top: 25px; }
+}
+@media (max-width: 600px) {
+  .profile-hero { padding: 12px 12px 0; }
+  .profile-copy { min-height: 410px; padding: 36px 7%; }
+  .profile-copy h1 { font-size: 38px; }
+  .profile-lead { font-size: 16px; }
+  .profile-visual { min-height: 230px; padding: 22px; }
+  .profile-visual-mark { font-size: 120px; }
+  .profile-prose p { font-size: 16px; }
+  .profile-interests .section { padding-top: 55px; padding-bottom: 55px; }
+}
