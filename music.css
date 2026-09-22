@@ -1,0 +1,28 @@
+.music-toggle {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 120;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 46px;
+  padding: 10px 16px;
+  border: 1px solid #b8dcad;
+  background: #1b5140;
+  color: #fff;
+  font: 600 14px/1.35 "Yangjin", "Noto Sans KR", "Malgun Gothic", sans-serif;
+  box-shadow: 0 8px 26px rgba(23, 55, 40, .18);
+  cursor: pointer;
+}
+.music-toggle:hover,
+.music-toggle[aria-pressed="true"] {
+  background: #286c54;
+}
+.music-toggle .music-icon {
+  color: #d8f5ad;
+  font: 22px/1 Georgia, serif;
+}
+@media (max-width: 600px) {
+  .music-toggle { right: 14px; bottom: 14px; }
+}
