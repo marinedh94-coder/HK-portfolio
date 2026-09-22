@@ -26,6 +26,9 @@
 .profile-visual-mark span { font-size: .35em; vertical-align: top; letter-spacing: 0; }
 .profile-about { display: grid; grid-template-columns: 1fr 1.1fr; gap: 8%; align-items: start; }
 .profile-about h2 { margin: 0; }
+.profile-youtube-button { display: inline-flex; align-items: center; justify-content: space-between; gap: 24px; margin-top: 28px; padding: 14px 20px; background: #1b5140; color: #fff; font-size: 15px; line-height: 1.5; transition: background .2s, transform .2s; }
+.profile-youtube-button:hover { background: #286c54; transform: translateY(-2px); }
+.profile-youtube-button span { font-size: 20px; line-height: 1; }
 .profile-prose p { font-size: 17px; line-height: 2; }
 .profile-prose p + p { color: var(--muted); margin-top: 20px; }
 .profile-interests { background: #edf2eb; }
