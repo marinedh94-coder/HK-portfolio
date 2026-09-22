@@ -6,7 +6,7 @@
 `dist/index.html`을 브라우저로 열면 됩니다. 별도 설치 없이 실행됩니다.
 
 ## 파일
-- `dist/introduce.html`: My Profile 소개 페이지 (`[이름]`과 임시 문구를 실제 정보로 교체)
+- `dist/introduce.html`: My Profile 소개 페이지 (임시 소개 문구를 실제 정보로 교체)
 - `dist/article.html`: 기사 목록과 펼쳐 읽는 임시 원고
 - `dist/image.html`: 이미지 갤러리와 확대 보기
 - `dist/video.html`: 영상 준비 상태와 스토리보드
