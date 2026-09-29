@@ -10,8 +10,8 @@
   document.body.appendChild(canvas);
 
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const ink = [];
-  const inkLifetime = 760;
+  const strokes = [];
+  const inkLifetime = 920;
   let point = null;
   let frame = 0;
 
@@ -27,103 +27,123 @@
     schedule();
   }
 
-  function drawInk(now) {
-    while (ink.length && now - ink[0].time > inkLifetime) ink.shift();
+  function strokePath(startX, startY, controlX, controlY, endX, endY, width, alpha) {
+    context.globalAlpha = alpha * .17;
+    context.strokeStyle = '#8f6f50';
+    context.lineWidth = width + 1.15;
+    context.beginPath();
+    context.moveTo(startX + .35, startY + .45);
+    context.quadraticCurveTo(controlX + .35, controlY + .45, endX + .35, endY + .45);
+    context.stroke();
 
+    context.globalAlpha = alpha;
+    context.strokeStyle = '#314a3c';
+    context.lineWidth = width;
+    context.beginPath();
+    context.moveTo(startX, startY);
+    context.quadraticCurveTo(controlX, controlY, endX, endY);
+    context.stroke();
+  }
+
+  function drawInk(now) {
+    while (strokes.length && now - strokes[0].time > inkLifetime) strokes.shift();
     context.lineCap = 'round';
     context.lineJoin = 'round';
-    for (let index = 1; index < ink.length; index++) {
-      const previous = ink[index - 1];
-      const current = ink[index];
+
+    for (let index = 1; index < strokes.length; index++) {
+      const previous = strokes[index - 1];
+      const current = strokes[index];
       if (current.break) continue;
 
-      const before = ink[Math.max(0, index - 2)];
-      const after = ink[Math.min(ink.length - 1, index + 1)];
+      const before = strokes[Math.max(0, index - 2)];
+      const after = strokes[Math.min(strokes.length - 1, index + 1)];
       const startX = before === previous || previous.break ? previous.x : (before.x + previous.x) / 2;
       const startY = before === previous || previous.break ? previous.y : (before.y + previous.y) / 2;
       const endX = after.break ? current.x : (current.x + after.x) / 2;
       const endY = after.break ? current.y : (current.y + after.y) / 2;
       const distance = Math.hypot(current.x - previous.x, current.y - previous.y) || 1;
-      const vertical = Math.abs(current.y - previous.y) / distance;
+      const elapsed = Math.max(1, current.time - previous.time);
+      const speed = distance / elapsed;
+      const directionWeight = Math.abs(current.y - previous.y) / distance;
       const life = Math.max(0, 1 - (now - current.time) / inkLifetime);
+      const width = Math.max(.65, Math.min(2.15, 1.85 - speed * .72 + directionWeight * .65));
 
-      context.globalAlpha = life * life * 0.82;
-      context.strokeStyle = '#1b5140';
-      context.lineWidth = (1.1 + vertical * 2.6) * (0.45 + life * 0.55);
-      context.beginPath();
-      context.moveTo(startX, startY);
-      context.quadraticCurveTo(previous.x, previous.y, endX, endY);
-      context.stroke();
+      strokePath(startX, startY, previous.x, previous.y, endX, endY, width, life * life * .72);
     }
     context.globalAlpha = 1;
   }
 
   function drawPen(x, y) {
     context.save();
-    context.translate(x, y);
+    context.translate(Math.round(x) + .5, Math.round(y) + .5);
     context.lineJoin = 'round';
 
-    // The nib tip is the click position. Its pale rim stays visible on dark panels.
-    context.fillStyle = '#194b3d';
-    context.strokeStyle = '#f5e9c8';
-    context.lineWidth = 2.5;
+    // Slender antique nib. The exact writing point remains at 0,0.
+    context.fillStyle = '#ad885b';
+    context.strokeStyle = '#2b211b';
+    context.lineWidth = 1.05;
     context.beginPath();
     context.moveTo(0, 0);
-    context.lineTo(4, -12);
-    context.lineTo(12, -20);
-    context.lineTo(21, -11);
-    context.lineTo(12, -3);
+    context.lineTo(3.4, -10.5);
+    context.lineTo(11.2, -18.4);
+    context.lineTo(18.5, -11.1);
+    context.lineTo(10.4, -3.5);
     context.closePath();
     context.fill();
     context.stroke();
 
-    context.fillStyle = '#f0d390';
+    context.fillStyle = '#d6b982';
     context.beginPath();
-    context.moveTo(3, -4);
-    context.lineTo(6, -12);
-    context.lineTo(12, -18);
-    context.lineTo(19, -11);
-    context.lineTo(11, -5);
+    context.moveTo(2.2, -2.2);
+    context.lineTo(5.1, -10.2);
+    context.lineTo(11.2, -16.6);
+    context.lineTo(16.6, -11.2);
+    context.lineTo(9.7, -5.2);
     context.closePath();
     context.fill();
 
-    context.strokeStyle = '#1b5140';
-    context.lineWidth = 1.2;
+    context.strokeStyle = '#2f4639';
+    context.lineWidth = .85;
     context.beginPath();
-    context.moveTo(0.5, -0.5);
-    context.lineTo(11, -11);
+    context.moveTo(.4, -.4);
+    context.lineTo(10.8, -10.8);
     context.stroke();
-    context.fillStyle = '#1b5140';
+    context.fillStyle = '#2f4639';
     context.beginPath();
-    context.arc(11, -11, 1.7, 0, Math.PI * 2);
+    context.arc(10.8, -10.8, 1.25, 0, Math.PI * 2);
     context.fill();
 
-    context.fillStyle = '#1b5140';
-    context.strokeStyle = '#f5e9c8';
+    context.fillStyle = '#2e4036';
+    context.strokeStyle = '#2b211b';
+    context.lineWidth = 1.05;
+    context.beginPath();
+    context.moveTo(11.2, -18.4);
+    context.lineTo(23.7, -31.2);
+    context.quadraticCurveTo(25.2, -32.7, 26.7, -31.2);
+    context.lineTo(30.1, -27.8);
+    context.quadraticCurveTo(31.6, -26.3, 30.1, -24.8);
+    context.lineTo(18.5, -11.1);
+    context.closePath();
+    context.fill();
+    context.stroke();
+
+    context.strokeStyle = '#ad885b';
     context.lineWidth = 2.2;
     context.beginPath();
-    context.moveTo(12, -20);
-    context.lineTo(27, -35);
-    context.quadraticCurveTo(29, -37, 31, -35);
-    context.lineTo(35, -31);
-    context.quadraticCurveTo(37, -29, 35, -27);
-    context.lineTo(21, -11);
-    context.closePath();
-    context.fill();
+    context.moveTo(18.6, -25.7);
+    context.lineTo(25.2, -19.1);
+    context.stroke();
+    context.strokeStyle = 'rgba(231, 212, 176, .72)';
+    context.lineWidth = .8;
+    context.beginPath();
+    context.moveTo(23.5, -30.1);
+    context.lineTo(28.8, -24.8);
     context.stroke();
 
-    context.strokeStyle = '#f0d390';
-    context.lineWidth = 3;
+    context.fillStyle = '#314a3c';
     context.beginPath();
-    context.moveTo(17, -25);
-    context.lineTo(28, -14);
-    context.stroke();
-    context.strokeStyle = 'rgba(245, 233, 200, .7)';
-    context.lineWidth = 1;
-    context.beginPath();
-    context.moveTo(25, -32);
-    context.lineTo(32, -25);
-    context.stroke();
+    context.arc(0, 0, 1.05, 0, Math.PI * 2);
+    context.fill();
     context.restore();
   }
 
@@ -132,19 +152,19 @@
     context.clearRect(0, 0, window.innerWidth, window.innerHeight);
     if (!reducedMotion.matches) drawInk(now);
     if (point) drawPen(point.x, point.y);
-    if (ink.length) schedule();
+    if (strokes.length) schedule();
   }
 
   function move(event) {
     if (event.pointerType !== 'mouse' && event.pointerType !== 'pen') return;
     const next = { x: event.clientX, y: event.clientY, time: performance.now() };
     if (!reducedMotion.matches) {
-      const previous = ink[ink.length - 1];
+      const previous = strokes[strokes.length - 1];
       const distance = previous ? Math.hypot(next.x - previous.x, next.y - previous.y) : 0;
-      if (!previous || distance >= 2) {
-        next.break = !previous || distance > 100 || next.time - previous.time > 100;
-        ink.push(next);
-        if (ink.length > 90) ink.shift();
+      if (!previous || distance >= 1.6) {
+        next.break = !previous || distance > 90 || next.time - previous.time > 110;
+        strokes.push(next);
+        if (strokes.length > 110) strokes.shift();
       }
     }
     point = next;
@@ -154,7 +174,7 @@
 
   function clear() {
     point = null;
-    ink.length = 0;
+    strokes.length = 0;
     document.body.classList.remove('fountain-pen-active');
     schedule();
   }
@@ -168,7 +188,7 @@
     if (document.hidden) clear();
   });
   reducedMotion.addEventListener('change', () => {
-    ink.length = 0;
+    strokes.length = 0;
     schedule();
   });
 })();
