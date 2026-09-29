@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="profile.css">
   <link rel="stylesheet" href="service.css">
   <link rel="stylesheet" href="cursor.css">
-  <link rel="stylesheet" href="music.css">
+  <link rel="stylesheet" href="music.css"><link rel="stylesheet" href="editorial.css">
   <script src="script.js" defer></script>
   <script src="cursor.js" defer></script>
   <script src="music.js" defer></script>
@@ -39,7 +39,7 @@
         <p class="eyebrow green">02 / DIGITAL SERVICE</p>
         <p class="service-status"><span aria-hidden="true"></span> LIVE SERVICE</p>
         <h1 id="service-title">추억의 미니홈피를<br><em>오늘의 화면으로.</em></h1>
-        <p class="service-lead">CyMiniroom은 싸이월드의 미니홈피 감성을 다시 경험하는 웹 서비스입니다. 오른쪽 휴대폰 화면에서 실제 서비스를 직접 둘러볼 수 있습니다.</p>
+        <p class="service-lead">CyMiniroom은 싸이월드의 미니홈피 감성을 다시 경험하는 웹 서비스입니다. 오른쪽 휴대폰 화면에서 실제 서비스 구성을 미리보고, 전체 화면으로 이동해 직접 이용할 수 있습니다.</p>
         <div class="service-actions">
           <a class="service-primary" href="https://cyworld-theta.vercel.app/" target="_blank" rel="noopener noreferrer">새 창에서 전체 화면으로 보기</a>
           <a class="text-link" href="#service-notes">서비스 특징 보기</a>
@@ -52,24 +52,17 @@
       </div>
 
       <div class="phone-stage">
-        <p class="phone-caption">LIVE PREVIEW · 화면을 스크롤해 보세요</p>
+        <p class="phone-caption">ACTUAL SCREEN · 화면을 스크롤해 보세요</p>
         <div class="phone" aria-label="CyMiniroom 휴대폰 목업">
           <span class="phone-button phone-button-one" aria-hidden="true"></span>
           <span class="phone-button phone-button-two" aria-hidden="true"></span>
           <span class="phone-button phone-button-three" aria-hidden="true"></span>
-          <div class="phone-screen">
+          <div class="phone-screen" role="region" tabindex="0" aria-label="CyMiniroom 실제 모바일 화면 미리보기">
             <div class="phone-island" aria-hidden="true"></div>
             <img class="service-snapshot" src="assets/cyminiroom-mobile.png" alt="CyMiniroom 실제 모바일 서비스 화면">
-            <iframe
-              src="https://cyworld-theta.vercel.app/?u=cy_retro"
-              title="CyMiniroom 실제 서비스 미리보기"
-              loading="eager"
-              allow="autoplay; clipboard-write"
-              referrerpolicy="strict-origin-when-cross-origin"
-            ></iframe>
           </div>
         </div>
-        <p class="phone-help">모바일에서는 화면을 스크롤해 미리보고, <a href="https://cyworld-theta.vercel.app/" target="_blank" rel="noopener noreferrer">실제 서비스 바로가기</a>에서 직접 이용할 수 있습니다.</p>
+        <p class="phone-help">화면을 스크롤해 미리보고, <a href="https://cyworld-theta.vercel.app/" target="_blank" rel="noopener noreferrer">실제 서비스 바로가기</a>에서 직접 이용할 수 있습니다.</p>
       </div>
     </section>
 
@@ -91,7 +84,7 @@
 
   <footer>
     <a class="footer-brand" href="index.html">AI ATELIER<span>배움을 쌓아, 나만의 가능성으로.</span></a>
-    <p>한국경제 AI 교육 개인 학습 포트폴리오<br><small>서비스 미리보기는 외부 운영 사이트를 실시간으로 불러옵니다. 공식 한국경제 사이트가 아닙니다.</small></p>
+    <p>한국경제 AI 교육 개인 학습 포트폴리오<br><small>실제 운영 사이트 화면을 휴대폰 목업으로 미리 보여줍니다. 공식 한국경제 사이트가 아닙니다.</small></p>
     <a href="#top">맨 위로 ↑</a>
   </footer>
 </body>
