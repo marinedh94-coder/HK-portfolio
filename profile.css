@@ -1,7 +1,7 @@
 /* Shared navigation and the My Profile card. */
 @media (min-width: 1001px) {
   header nav { gap: clamp(16px, 2.1vw, 34px); }
-  .category-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .category-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 @media (max-width: 1160px) {
   .header-note { display: none; }
@@ -12,6 +12,8 @@
 }
 .profile-category { background: #dcefe2; }
 .profile-category .category-mark { font-size: 56px; letter-spacing: -0.08em; }
+.service-category { background: #f8e7ed; }
+.service-category .category-mark { color: #c84473; }
 .page-introduce { font-family: "Yangjin", "Noto Sans KR", "Malgun Gothic", sans-serif; }
 .profile-hero { padding: 28px 5% 0; }
 .profile-hero-inner { min-height: 570px; display: grid; grid-template-columns: 1.1fr .9fr; background: #e8f1e9; }
@@ -33,7 +35,7 @@
 .profile-prose p + p { color: var(--muted); margin-top: 20px; }
 .profile-interests { background: #edf2eb; }
 .profile-interests .section { padding-top: 80px; padding-bottom: 90px; }
-.profile-interest-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 16px; margin-top: 38px; }
+.profile-interest-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 16px; margin-top: 38px; }
 .profile-interest-grid a { position: relative; background: var(--paper); padding: 28px; min-height: 240px; transition: transform .2s; }
 .profile-interest-grid a:hover { transform: translateY(-5px); }
 .profile-interest-grid span { color: var(--green); font-size: 12px; letter-spacing: 1px; }
@@ -92,8 +94,7 @@ h1, h2, h3, p, a, strong { overflow-wrap: anywhere; }
   header { padding: 14px 16px 12px; gap: 12px; }
   header nav { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); width: 100%; gap: 4px 8px; overflow: visible; white-space: normal; text-align: center; font-size: clamp(11px, 3vw, 14px); }
   header nav a { min-width: 0; padding: 7px 2px; }
-  header nav a:nth-child(-n + 3) { grid-column: span 2; }
-  header nav a:nth-child(n + 4) { grid-column: span 3; }
+  header nav a { grid-column: span 2; }
   .hero { display: flex; flex-direction: column; min-height: 540px; height: auto; margin: 0 12px; }
   .hero-copy { padding: 55px 7% 35px; }
   .hero-bottom { position: relative; inset: auto; margin-top: auto; padding: 12px 7% 22px; flex-wrap: wrap; }
